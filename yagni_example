@@ -1,0 +1,41 @@
+class ShoppingCart:
+
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def remove_item(self, item):
+        if item in self.items:
+            self.items.remove(item)
+
+    def calculate_total(self):
+        total = 0
+        for item in self.items:
+            total += item.price
+        return total
+
+
+class Item:
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+
+def main():
+    cart = ShoppingCart()
+
+    cart.add_item(Item("Футболка", 20))
+    cart.add_item(Item("Джинси", 50))
+    cart.add_item(Item("Кросівки", 80))
+
+    cart.remove_item(Item("Джинси", 50))
+
+    total = cart.calculate_total()
+    print("Загальна сума покупок:", total)
+
+
+if __name__ == "__main__":
+    main()
